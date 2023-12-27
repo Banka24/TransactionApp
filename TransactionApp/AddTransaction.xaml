@@ -45,7 +45,7 @@
                Grid.RowSpan="2"
                Margin="43,168,0,0"/>
 
-        <DatePicker Name="Date" Margin="75,173,0,0"
+        <DatePicker x:Name="DateTransaction" Margin="75,173,0,0"
                     Grid.RowSpan="2"
                     Width="200"
                     SelectedDateFormat="Short" 
