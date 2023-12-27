@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 
 namespace TransactionApp
 {
+    
     /// <summary>
     /// Логика взаимодействия для MainWindow.xaml
     /// </summary>

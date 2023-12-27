@@ -23,6 +23,7 @@ namespace TransactionApp
         public CheckBalance()
         {
             InitializeComponent();
+            balance.Text = FinancialTracker.GetBalance();
         }
     }
 }
