@@ -5,8 +5,52 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TransactionApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Финансовый трекер" Height="450" Width="620"
+        WindowStyle="ToolWindow">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35"/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="35"/>
+        </Grid.RowDefinitions>
+
+        <Label Background="Black"
+               Opacity="0.7"
+               Grid.Row="4"/>
+        <Label Content="Добро пожаловать в финансовый трекер!"
+               FontSize="14"
+               Foreground="White"
+               Opacity="0.65"
+               Grid.Row="3"
+               HorizontalAlignment="Center"
+               VerticalAlignment="Center"/>
+
+        <StackPanel Orientation="Horizontal">
+
+            <Button Content="Добавить транзакцию"
+                HorizontalAlignment="Left"
+                Width="130"
+                Margin="4,0,0,0"
+                Click="AddTransactionsBtn"/>
+
+            <Button Content="Посмотреть общий баланс"
+                    Margin="10,0,0,0"
+                    Click="CheckBalancBtn"/>
+
+            <Button Content="Посмотреть статиститку трат по категориям"
+                    Margin="10,0,0,0"
+                    Click="StaticCheckBtn"/>
+
+            <Button Content="Выход"
+                    Margin="10,0,0,0"
+                    Click="ExitBtn"/>
+        </StackPanel>
+
+        <Frame Grid.Row="1"
+               Grid.RowSpan="2"
+               Name="NavigatPages"
+               NavigationUIVisibility="Hidden"/>
+
     </Grid>
 </Window>

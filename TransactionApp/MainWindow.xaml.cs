@@ -24,5 +24,26 @@ namespace TransactionApp
         {
             InitializeComponent();
         }
+
+        private void ExitBtn(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Спасибо за использования финансового трекера!");
+            Environment.Exit(0);
+        }
+
+        private void StaticCheckBtn(object sender, RoutedEventArgs e)
+        {
+            NavigatPages.Navigate(new CheckStatistic());
+        }
+
+        private void CheckBalancBtn(object sender, RoutedEventArgs e)
+        {
+            NavigatPages.Navigate(new CheckBalance());
+        }
+
+        private void AddTransactionsBtn(object sender, RoutedEventArgs e)
+        {
+            NavigatPages.Navigate(new AddTransaction());
+        }
     }
 }

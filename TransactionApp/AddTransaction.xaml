@@ -1,0 +1,63 @@
+﻿<Page x:Class="TransactionApp.AddTransaction"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:TransactionApp"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="620"
+      Title="Добавление транзакции">
+
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="200"/>
+            <RowDefinition Height="200"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+
+        <Label Content="Введите сумму транзакции:"
+               FontSize="14"
+               HorizontalAlignment="Left"
+               Grid.RowSpan="2"
+               Margin="50,64,0,0"/>
+        
+        <TextBox Width="180"
+                 Height="20"
+                 Margin="50,-238,0,0"
+                 Grid.RowSpan="2"
+                 Name="AddNumber"/>
+        
+        <Label Content="Введите категорию транзакции:"
+               FontSize="14"
+               HorizontalAlignment="Left"
+               Grid.RowSpan="2"
+               Margin="20,114,0,0"/>
+
+        <TextBox Width="180"
+                 Height="20"
+                 Margin="50,-136,0,0"
+                 Grid.RowSpan="2"
+                 Name="Category"/>
+
+        <Label Content="Введите дату (ГГГГ-ММ-ДД):"
+               FontSize="14"
+               HorizontalAlignment="Left"
+               Grid.RowSpan="2"
+               Margin="43,168,0,0"/>
+
+        <TextBox Width="180"
+                 Height="20"
+                 Margin="50,-30,0,0"
+                 Grid.RowSpan="2"
+                 Name="Birthday"/>
+
+        <Button Grid.Row="0"
+                Grid.RowSpan="2"
+                Width="250"
+                Height="50"
+                Margin="0,180,0,0"
+                Content="Добавить транзакцию"
+                Click="Button_Click"/>
+
+    </Grid>
+</Page>
