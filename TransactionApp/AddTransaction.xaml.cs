@@ -27,7 +27,21 @@ namespace TransactionApp
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            if(!decimal.TryParse(AddNumber.Text, out decimal amount))
+            {
+                MessageBox.Show("Введите сумму числом");
+            }
 
+            if (!DateTime.TryParse(Birthday.Text, out DateTime date))
+            {
+                MessageBox.Show("Введите корректную дату");
+            }
+
+            string category = Category.Text;
+
+            Transaction newTransaction = new Transaction(amount, category, date);
+
+            FinancialTracker.AddTransaction(newTransaction);
         }
     }
 }

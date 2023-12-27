@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:TransactionApp"
         mc:Ignorable="d"
         Title="Финансовый трекер" Height="450" Width="620"
-        WindowStyle="ToolWindow">
+        WindowStyle="ToolWindow" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="35"/>

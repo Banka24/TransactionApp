@@ -15,7 +15,7 @@
                VerticalAlignment="Center"
                Margin="0,-45,0,0"
                FontSize="45"/>
-        <Label
+        <TextBlock
                x:Name="balance"
                Opacity="0.6"
                Foreground="Gray"
