@@ -35,7 +35,8 @@
                HorizontalAlignment="Center"
                Margin="0,40,0,0"
                Name="statics"/>
-        <Label Name="rasxodi"
+        
+        <TextBlock Name="rasxodi"
                Grid.Row="1"
                HorizontalAlignment="Center"
                Margin="-121,70,0,0"/>

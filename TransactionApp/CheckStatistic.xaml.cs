@@ -27,7 +27,9 @@ namespace TransactionApp
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
+            string category = Category.Text;
+            string amount = FinancialTracker.GetExpensesByCategory(category);
+            rasxodi.Text = amount;
         }
     }
 }

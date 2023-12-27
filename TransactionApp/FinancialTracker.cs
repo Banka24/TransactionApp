@@ -22,5 +22,20 @@ namespace TransactionApp
             
             return Convert.ToString(amount);
         }
+
+        public static string GetExpensesByCategory(string category)
+        {
+            decimal amount = 0;
+
+            foreach(Transaction transaction in Storage.allTransactions)
+            {
+                if(transaction.Category == category)
+                {
+                    amount += transaction.Amount;
+                }
+            }
+
+            return Convert.ToString(amount);
+        }
     }
 }
