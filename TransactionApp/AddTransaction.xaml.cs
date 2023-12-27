@@ -32,11 +32,7 @@ namespace TransactionApp
                 MessageBox.Show("Введите сумму числом");
             }
 
-            if (!DateTime.TryParse(Date.Text, out DateTime date))
-            {
-                MessageBox.Show("Введите корректную дату");
-            }
-
+            DateTime date = Convert.ToDateTime(DateTransaction.SelectedDate);
             string category = Category.Text;
 
             Transaction newTransaction = new Transaction(amount, category, date);
