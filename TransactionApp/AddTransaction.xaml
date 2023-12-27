@@ -33,11 +33,13 @@
                Grid.RowSpan="2"
                Margin="20,114,0,0"/>
 
-        <TextBox Width="180"
-                 Height="20"
-                 Margin="50,-136,0,0"
-                 Grid.RowSpan="2"
-                 Name="Category"/>
+        <StackPanel Width="180" Margin="50,120,0,0">
+            <ComboBox x:Name="Category">
+                <TextBlock Text="Продукты"/>
+                <TextBlock Text="Авто"/>
+                <TextBlock Text="Пейзажи"/>
+            </ComboBox>
+        </StackPanel>
 
         <Label Content="Введите дату (ГГГГ-ММ-ДД):"
                FontSize="14"
