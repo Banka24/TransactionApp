@@ -32,7 +32,7 @@ namespace TransactionApp
                 MessageBox.Show("Введите сумму числом");
             }
 
-            if (!DateTime.TryParse(Birthday.Text, out DateTime date))
+            if (!DateTime.TryParse(Date.Text, out DateTime date))
             {
                 MessageBox.Show("Введите корректную дату");
             }
