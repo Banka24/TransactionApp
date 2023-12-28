@@ -8,7 +8,7 @@ namespace TransactionApp
 {
     class FinancialTracker
     {
-        public void AddTransaction(Transaction transaction)
+        public static void AddTransaction(Transaction transaction)
         {
             Storage.allTransactions.Add(transaction);
         }
