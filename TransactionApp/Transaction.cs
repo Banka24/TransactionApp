@@ -8,8 +8,22 @@ namespace TransactionApp
 {
     class Transaction
     {
-        public decimal Amount { get; set; }
-        public string Category { get; set; }
+        private decimal amount;
+
+        public decimal Amount
+        {
+            get { return amount; }
+            set { amount = value >= 0 ? value : 0; }
+        }
+
+        private string category;
+
+        public string Category
+        {
+            get { return category; }
+            set { category = string.IsNullOrEmpty(value) ? "NULL" : value; }
+        }
+
         public DateTime Date { get; set; }
 
         public Transaction(decimal amount, string category, DateTime date)
@@ -21,7 +35,9 @@ namespace TransactionApp
 
         public Transaction()
         {
-
+            Amount = 0;
+            Category = "NULL";
+            Date = DateTime.Today;
         }
 
     }

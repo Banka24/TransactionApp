@@ -8,34 +8,22 @@ namespace TransactionApp
 {
     class FinancialTracker
     {
-        public static void AddTransaction(Transaction transaction)
+        public void AddTransaction(Transaction transaction)
         {
             Storage.allTransactions.Add(transaction);
         }
-        public static string GetBalance()
+        public static decimal GetBalance()
         {
-            decimal amount = 0;
-            foreach(Transaction transaction in Storage.allTransactions)
-            {
-                amount += transaction.Amount;
-            }
+            decimal amount = Storage.allTransactions.Sum(transaction => transaction.Amount);
             
-            return Convert.ToString(amount);
+            return amount;
         }
 
-        public static string GetExpensesByCategory(string category)
+        public static decimal GetExpensesByCategory(string category)
         {
-            decimal amount = 0;
+            decimal amount = Storage.allTransactions.Where(transaction => transaction.Category == category).Sum(transaction => transaction.Amount);
 
-            foreach(Transaction transaction in Storage.allTransactions)
-            {
-                if(transaction.Category == category)
-                {
-                    amount += transaction.Amount;
-                }
-            }
-
-            return Convert.ToString(amount);
+            return amount;
         }
     }
 }
