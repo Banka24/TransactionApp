@@ -30,12 +30,28 @@ namespace TransactionApp
             if(!decimal.TryParse(AddNumber.Text, out decimal amount))
             {
                 MessageBox.Show("Введите сумму числом");
+                return;
             }
 
-            DateTime date = Convert.ToDateTime(DateTransaction.SelectedDate);
-            string category = Category.Text;
+            if(String.IsNullOrEmpty(AddNumber.Text) || String.IsNullOrEmpty(Category.Text))
+            {
+                MessageBox.Show("Вы ввели пустые значения");
+                return;
+            }
 
-            Transaction newTransaction = new Transaction(amount, category, date);
+            DateTime date;
+
+            try
+            {
+                date = Convert.ToDateTime(DateTransaction.SelectedDate);
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Вы ввели неправильную дату");
+                return;
+            }
+
+            Transaction newTransaction = new Transaction(amount, Category.Text, date);
 
             FinancialTracker.AddTransaction(newTransaction);
         }

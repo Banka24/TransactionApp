@@ -33,12 +33,5 @@ namespace TransactionApp
             Date = date;
         }
 
-        public Transaction()
-        {
-            Amount = 0;
-            Category = "NULL";
-            Date = DateTime.Today;
-        }
-
     }
 }

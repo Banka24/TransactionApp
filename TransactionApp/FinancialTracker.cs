@@ -12,18 +12,14 @@ namespace TransactionApp
         {
             Storage.allTransactions.Add(transaction);
         }
-        public static decimal GetBalance()
+        public static string GetBalance()
         {
-            decimal amount = Storage.allTransactions.Sum(transaction => transaction.Amount);
-            
-            return amount;
+            return Storage.allTransactions.Sum(transaction => transaction.Amount).ToString();
         }
 
-        public static decimal GetExpensesByCategory(string category)
+        public static string GetExpensesByCategory(string category)
         {
-            decimal amount = Storage.allTransactions.Where(transaction => transaction.Category == category).Sum(transaction => transaction.Amount);
-
-            return amount;
+            return Storage.allTransactions.Where(transaction => transaction.Category == category).Sum(transaction => transaction.Amount).ToString();
         }
     }
 }
