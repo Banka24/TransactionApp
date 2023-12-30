@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
+using static System.Windows.MessageBox;
 
 namespace TransactionApp
 {
@@ -19,6 +20,7 @@ namespace TransactionApp
             var command = new SqlCommand(queryString, dataBase.GetConnection());
             adapter.SelectCommand = command;
             adapter.Fill(table);
+            Show("Данные успешно добавлены");
         }
         public static decimal GetBalance()
         {
