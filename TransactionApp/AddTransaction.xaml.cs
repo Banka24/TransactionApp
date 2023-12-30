@@ -44,6 +44,11 @@ namespace TransactionApp
             try
             {
                 date = Convert.ToDateTime(DateTransaction.SelectedDate);
+                if(date == DateTime.MinValue)
+                {
+                    MessageBox.Show("Укажите дату");
+                    return;
+                }
             }
             catch (FormatException)
             {

@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace TransactionApp
 {
-    class Storage
-    {
-        public static List<Transaction> allTransactions = new List<Transaction>();
-    }
+    //class Storage
+    //{
+    //    public static List<Transaction> allTransactions = new List<Transaction>();
+    //}
 }

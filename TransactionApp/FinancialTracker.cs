@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace TransactionApp
 {
@@ -10,16 +12,41 @@ namespace TransactionApp
     {
         public static void AddTransaction(Transaction transaction)
         {
-            Storage.allTransactions.Add(transaction);
+            DataBase dataBase = new DataBase();
+            SqlDataAdapter adapter = new SqlDataAdapter();
+            DataTable table = new DataTable();
+            string queryString = $"INSERT INTO Transactions VALUES ({transaction.Amount}, '{transaction.Category}', '{transaction.Date}')";
+            var command = new SqlCommand(queryString, dataBase.GetConnection());
+            adapter.SelectCommand = command;
+            adapter.Fill(table);
         }
-        public static string GetBalance()
+        public static decimal GetBalance()
         {
-            return Storage.allTransactions.Sum(transaction => transaction.Amount).ToString();
+            DataBase dataBase = new DataBase();
+            dataBase.OpenConection();
+            string queryString = "SELECT SUM(amount) FROM Transactions";
+            var command = new SqlCommand(queryString, dataBase.GetConnection());
+            var result = command.ExecuteScalar();
+            if(result is DBNull)
+            {
+                result = 0;
+            }
+            return Convert.ToDecimal(result);
         }
 
-        public static string GetExpensesByCategory(string category)
+        public static decimal GetExpensesByCategory(string category)
         {
-            return Storage.allTransactions.Where(transaction => transaction.Category == category).Sum(transaction => transaction.Amount).ToString();
+            DataBase dataBase = new DataBase();
+            dataBase.OpenConection();
+            string queryString = $"SELECT SUM(amount) FROM Transactions WHERE category = '{category}'";
+            var command = new SqlCommand(queryString, dataBase.GetConnection());
+            var result = command.ExecuteScalar();
+            if (result is DBNull)
+            {
+                result = 0;
+            }
+            return Convert.ToDecimal(result);
         }
+
     }
 }
