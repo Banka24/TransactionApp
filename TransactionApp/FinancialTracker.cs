@@ -9,11 +9,17 @@ using static System.Windows.MessageBox;
 
 namespace TransactionApp
 {
-    class FinancialTracker
+    static class FinancialTracker
     {
+        private static SqlDataBase dataBase;
+        static FinancialTracker()
+        {
+            dataBase = new SqlDataBase();
+            dataBase.OpenConection();
+        }
+
         public static void AddTransaction(Transaction transaction)
         {
-            DataBase dataBase = new DataBase();
             SqlDataAdapter adapter = new SqlDataAdapter();
             DataTable table = new DataTable();
             string queryString = $"INSERT INTO Transactions VALUES ({transaction.Amount}, '{transaction.Category}', '{transaction.Date}')";
@@ -24,30 +30,24 @@ namespace TransactionApp
         }
         public static decimal GetBalance()
         {
-            DataBase dataBase = new DataBase();
-            dataBase.OpenConection();
             string queryString = "SELECT SUM(amount) FROM Transactions";
+            return GetInfo(queryString);
+        }
+
+        private static decimal GetInfo(string queryString)
+        {
             var command = new SqlCommand(queryString, dataBase.GetConnection());
             var result = command.ExecuteScalar();
-            if(result is DBNull)
-            {
-                result = 0;
-            }
+
+            result = result is DBNull ? 0 : result;
+
             return Convert.ToDecimal(result);
         }
 
         public static decimal GetExpensesByCategory(string category)
         {
-            DataBase dataBase = new DataBase();
-            dataBase.OpenConection();
             string queryString = $"SELECT SUM(amount) FROM Transactions WHERE category = '{category}'";
-            var command = new SqlCommand(queryString, dataBase.GetConnection());
-            var result = command.ExecuteScalar();
-            if (result is DBNull)
-            {
-                result = 0;
-            }
-            return Convert.ToDecimal(result);
+            return GetInfo(queryString);
         }
 
     }

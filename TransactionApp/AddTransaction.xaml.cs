@@ -44,11 +44,6 @@ namespace TransactionApp
             try
             {
                 date = Convert.ToDateTime(DateTransaction.SelectedDate);
-                if(date == DateTime.MinValue)
-                {
-                    MessageBox.Show("Укажите дату");
-                    return;
-                }
             }
             catch (FormatException)
             {
@@ -56,9 +51,22 @@ namespace TransactionApp
                 return;
             }
 
+            if(date == DateTime.MinValue)
+            {
+                MessageBox.Show("Укажите дату");
+                return;
+            }
+
             Transaction newTransaction = new Transaction(amount, Category.Text, date);
 
-            FinancialTracker.AddTransaction(newTransaction);
+            try
+            {
+                FinancialTracker.AddTransaction(newTransaction);
+            }
+            catch (TypeInitializationException)
+            {
+                MessageBox.Show("Ошибка подключения\nПроверьте файл конфигурации.");
+            }
         }
     }
 }

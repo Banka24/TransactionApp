@@ -36,6 +36,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -55,9 +56,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="DataBase.cs" />
+    <Compile Include="SqlDataBase.cs" />
     <Compile Include="FinancialTracker.cs" />
-    <Compile Include="Storage.cs" />
     <Compile Include="Transaction.cs" />
     <Page Include="AddTransaction.xaml">
       <SubType>Designer</SubType>

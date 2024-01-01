@@ -27,7 +27,14 @@ namespace TransactionApp
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            rasxodi.Text = FinancialTracker.GetExpensesByCategory(Category.Text).ToString();
+            try
+            {
+                rasxodi.Text = FinancialTracker.GetExpensesByCategory(Category.Text).ToString();
+            }
+            catch (TypeInitializationException)
+            {
+                MessageBox.Show("Ошибка подключения\nПроверьте файл конфигурации.");
+            }
         }
     }
 }
