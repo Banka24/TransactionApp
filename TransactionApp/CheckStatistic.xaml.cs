@@ -27,9 +27,14 @@ namespace TransactionApp
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            string category = Category.Text;
-            decimal amount = FinancialTracker.GetExpensesByCategory(category);
-            rasxodi.Text = amount.ToString();
+            try
+            {
+                rasxodi.Text = FinancialTracker.GetExpensesByCategory(Category.Text).ToString();
+            }
+            catch (TypeInitializationException)
+            {
+                MessageBox.Show("Ошибка подключения\nПроверьте файл конфигурации.");
+            }
         }
     }
 }

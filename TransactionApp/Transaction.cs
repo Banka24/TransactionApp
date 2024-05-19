@@ -16,14 +16,7 @@ namespace TransactionApp
             set { amount = value >= 0 ? value : 0; }
         }
 
-        private string category;
-
-        public string Category
-        {
-            get { return category; }
-            set { category = string.IsNullOrEmpty(value) ? "NULL" : value; }
-        }
-
+        public string Category { get; set; }
         public DateTime Date { get; set; }
 
         public Transaction(decimal amount, string category, DateTime date)
@@ -31,13 +24,6 @@ namespace TransactionApp
             Amount = amount;
             Category = category;
             Date = date;
-        }
-
-        public Transaction()
-        {
-            Amount = 0;
-            Category = "NULL";
-            Date = DateTime.Today;
         }
 
     }

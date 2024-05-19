@@ -23,7 +23,14 @@ namespace TransactionApp
         public CheckBalance()
         {
             InitializeComponent();
-            balance.Text = FinancialTracker.GetBalance().ToString();
+            try
+            {
+                balance.Text = $"{FinancialTracker.GetBalance()}";
+            }
+            catch (TypeInitializationException)
+            {
+                MessageBox.Show("Ошибка подключения\nПроверьте файл конфигурации.");
+            }
         }
     }
 }
